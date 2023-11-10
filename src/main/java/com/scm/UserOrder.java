@@ -8,7 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
 public class UserOrder implements Serializable {
+
+    @JsonProperty
+    private Long userOrderId;
     @JsonProperty
     private int userId;
     @JsonProperty
@@ -25,6 +29,8 @@ public class UserOrder implements Serializable {
     private int prodQty;
     @JsonProperty
     private double totalPrice;
+    @JsonProperty
+    private String orderStatus;
 
     public int getUserId() {
         return userId;
@@ -82,12 +88,28 @@ public class UserOrder implements Serializable {
         this.prodQty = prodQty;
     }
 
+    public Long getUserOrderId() {
+        return userOrderId;
+    }
+
+    public void setUserOrderId(Long userOrderId) {
+        this.userOrderId = userOrderId;
+    }
+
     public double getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     @Override
@@ -100,7 +122,9 @@ public class UserOrder implements Serializable {
                 ", prodType='" + prodType + '\'' +
                 ", prodPrice=" + prodPrice +
                 ", prodQty=" + prodQty +
+                ", userOrderId=" + userOrderId +
                 ", totalPrice=" + totalPrice +
+                ", orderStatus='" + orderStatus + '\'' +
                 '}';
     }
 }
